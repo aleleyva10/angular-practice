@@ -1,18 +1,14 @@
 // requires
 var express = require('express');
 var app = express();
-var path = require('path');
-var bodyParser = require('body-parser');
-var pg = require('pg');
+var index = require('./modules/routes/index');
+var tasks = require('./modules/routes/tasks');
 
-var 
 
 // uses
 app.use(express.static('public'));
-app.use(express.static('public/views'));
-app.use(express.static('public/scripts'));
-app.use(express.static('public/styles'));
-app.use(express.static('public/vendors'));
+app.use('/', index);
+app.use('/tasks', tasks);
 
 
 // globals

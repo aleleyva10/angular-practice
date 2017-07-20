@@ -1,0 +1,59 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+main {
+  margin: auto;
+  width: 80%;
+}
+
+h1 {
+  font-size: 1.75em;
+}
+
+input {
+  box-sizing: border-box;
+  border: 3px solid lightgray;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+}
+
+form button {
+  border: 1px solid gray;
+  background: salmon;
+  color: white;
+  padding: 1em;
+  box-shadow: 2px 2px 2px gray;
+}
+
+input, form button {
+  font-size: 1em;
+  border-radius: 0.3em;
+}
+
+label {
+  display: block;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.delete {
+  font-size: 0.75em;
+  border-radius: 1em;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  padding: 0;
+  margin-left: 1em;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.complete {
+  text-decoration: line-through;
+  background-color: salmon;
+}
