@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TO DO LIST</title>
-  <script type="text/javascript" src="/vendors/angular.min.js"></script>
-  <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
-  <script type="text/javascript" src="/routes/tasks.js"></script>
+  <script type="text/javascript" src="vendors/angular.min.js"></script>
+  <script type="text/javascript" src="vendors/angular-route.min.js"></script>
+  <script type="text/javascript" src="scripts/TasksController.js"></script>
+  <script type="text/javascript" src="scripts/services/TasksService.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title">
+  <link rel="stylesheet" href="styles/main.css" media="screen" title="no title">
 </head>
 
 <body ng-app="myApp">
@@ -28,7 +29,7 @@
       <h2>To Be Done</h2>
       <div id="task-list">
         <p ng-repeat="task in tc.tasks">
-          {{task.task.body}}
+          {{task.body}}
         </p>
       </div>
     </section>
