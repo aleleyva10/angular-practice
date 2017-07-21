@@ -18,21 +18,28 @@ var pool = new pg.Pool(config);
 
 // POST /todos
 router.post('/', function(req, res) {
-  var tasks = req.body; // data from the client
+  var task = req.body; // data from the client
+  console.log(req.body);
 
   // do database query to make a new task
-  pool.connect()
-    .then(function(client) {
-      client.query('INSERT INTO task (description) VALUES($1)', [task.description])
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log('Error connecting to the DB', err);
+      res.sendStatus(500);
+      done();
+      return;
+    }
+      client.query('INSERT INTO task (description) VALUES($1)', [task.task])
         .then(function() {
-          client.release();
+          done();
           res.sendStatus(201); // created
-        });
-    })
+        })
     .catch(function(err) {
+      console.log(err);
       client.release();
       res.sendStatus(500); // server error
     });
+  });
 });
 
 //get /tasks

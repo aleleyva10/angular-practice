@@ -1,15 +1,11 @@
 var myApp = angular.module('myApp', []);
-myApp.config(function($routeProvider){
-  $routeProvider.when('/', {
-    templateUrl: 'modules/routes/tasks.js'
-  });
-});
+
 myApp.controller('TasksController', function(TasksService) {
   var vm = this;
 
   vm.getTasks = function() {
-    console.log('in controller', getTasks);
-    TasksService.retrieveTasks().then(function() {
+    console.log('in controller');
+    TasksService.getTasks().then(function() {
       vm.tasks = TasksService.data;
       console.log('back in controller with:', vm.tasks);
     });
@@ -17,11 +13,13 @@ myApp.controller('TasksController', function(TasksService) {
 
   vm.addTask = function() {
     var taskToSend = {
-      task: vm.task
-    }
+      task: vm.enterTask
+    };
+    console.log(taskToSend);
+
     vm.task = '';
-    TasksService.addTask(taskToSend).then(function(res) {
-      console.log(res);
+    TasksService.addTask(taskToSend).then(function(data) {
+      console.log(data);
       vm.getTasks();
     });
   };
@@ -30,12 +28,18 @@ myApp.controller('TasksController', function(TasksService) {
     vm.getTasks();
   };
 
-  vm.deleteTask = function() {
+  vm.deleteTask = function(taskId) {
     console.log('task to delete:');
-    TasksService.deleteTask().then(function() {
+    TasksService.deleteTask(taskId).then(function() {
       console.log('back in controller', TasksService.deletedTask);
       vm.delete = TasksService.deletedTask;
       vm.getTasks();
     });
+  };
+
+
+  vm.updateTask = function(){
+    console.log('update task');
+
   };
 });

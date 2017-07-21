@@ -21,19 +21,21 @@
     <div ng-controller="TasksController as tc" ng-init="tc.getTasks()">
       <form id="task-form">
         <label for="task_name"></label>
-        <input class="full-width" type="text" id="task_name" placeholder="Enter a task" autofocus="autofocus">
-        <button ng-click="tc.addTask()" id="add-task">Add</button>
+        <input class="full-width" type="text" id="task_name" placeholder="Enter a task" ng-model="tc.enterTask">
+        <button ng-click="tc.addTask()" class="add-task">Add</button>
       </form>
+
+      <section>
+        <h2>To Be Done</h2>
+        <div id="task-list">
+          <p ng-repeat="task in tc.tasks">
+            {{ $index + 1}} {{task.description}}
+            <button ng-click="tc.completedTask(task.id)" class="completed-task">Done</button>
+            <button ng-click="tc.deleteTask(task.id)" class="delete-task">Delete</button></p>
+        </div>
+
+      </section>
     </div>
-    <section>
-      <h2>To Be Done</h2>
-      <div id="task-list">
-        <p ng-repeat="task in tc.tasks">
-          {{task.body}}
-        </p>
-      </div>
-    </section>
-    <main ng-view></main>
   </main>
 </body>
 
